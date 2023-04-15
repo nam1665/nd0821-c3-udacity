@@ -13,7 +13,7 @@ def test_get_function():
         assert result.status_code == 200
         # Checking the json message
         assert result.json() == {
-            "message": "Welcome User! This is an app to predict whether or not someone's income will exceed $50,000/year."
+            "message": "Greetings! This application aims to predict whether an individual's income will surpass $50,000 per year or not."
         }
     except AssertionError as err:
         print("GET function message is not what it is supposed to be!")

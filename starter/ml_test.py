@@ -51,10 +51,10 @@ def test_process_data_function(data):
 
 def test_model_and_paths():
     # Verify the existence of all the model files.
-    assert os.path.exists("./model/rf_model.pkl")
-    assert os.path.exists("./model/encoder.pkl")
-    assert os.path.exists("./model/lb.pkl")
+    assert os.path.exists("starter/model/rf_model.pkl")
+    assert os.path.exists("starter/model/encoder.pkl")
+    assert os.path.exists("starter/model/lb.pkl")
 
     # Load model
-    model = joblib.load("./model/rf_model.pkl")
+    model = joblib.load("starter/model/rf_model.pkl")
     assert isinstance(model, RandomForestClassifier)
