@@ -25,8 +25,8 @@ cat_features = [
 @pytest.fixture()
 def data():
     # Check if the path and file exists
-    assert os.path.exists('./data/clean_census.csv')
-    return pd.read_csv('./data/clean_census.csv')
+    assert os.path.exists('starter/data/clean_census.csv')
+    return pd.read_csv('starter/data/clean_census.csv')
 
 
 def test_data_and_features(data):

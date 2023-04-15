@@ -31,3 +31,4 @@ def test_inference():
     pred = inference(model, X)
     # Check if pred.shape is similar to y.shape
     assert y.shape == pred.shape
+
