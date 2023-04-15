@@ -28,7 +28,6 @@ To extract all the input types/classes run the following code:
      print(data[feat].unique())
  """
 
-
 class UserClassInfo(BaseModel):
     age: int
     workclass: Literal[
@@ -103,15 +102,13 @@ lb = joblib.load("model/lb.pkl")
 # Define GET function
 @app.get("/")
 async def get_items():
-    return {"message": "Welcome User! This is an app to predict whether or not someone's income will exceed $50,"
-                       "000/year."}
+    return {"message": "Greetings! This application aims to predict whether an individual's income will surpass $50,000 per year or not."}
 
 
-# Define POST function to predict the income category based on input of all the 15 features
+# Create a POST function that predicts the income category based on the input of all 15 features.
 @app.post("/predict")
 async def predict(data_input: UserClassInfo):
-    # Define categorical features.
-    # We need them to process the input and create correct feature similar to the time of training
+    # Define categorical features, as they are necessary to process the input data and create accurate features that align with those used during training.
     cat_features = [
         "workclass",
         "education",
@@ -123,7 +120,7 @@ async def predict(data_input: UserClassInfo):
         "native-country",
     ]
 
-    # Load model, encoder and lb from model folder
+    # Load rf_model, encoder and lb from model folder
     rf_classifier = joblib.load("model/rf_model.pkl")
     rf_encoder = joblib.load("model/encoder.pkl")
     rf_lb = joblib.load("model/lb.pkl")
@@ -146,7 +143,7 @@ async def predict(data_input: UserClassInfo):
         data_input.native_country
     ]])
 
-    # Convert input data from web to pandas dataframe
+    # Transform the web input data into a Pandas DataFrame.
     df_input_data = pd.DataFrame(data=test_input_from_web, columns=[
         "age",
         "workclass",
@@ -172,7 +169,7 @@ async def predict(data_input: UserClassInfo):
         training=False
     )
 
-    # Run the inference on the data sample
+    # Execute inference on the provided data sample.
     y_prediction = inference(rf_classifier, x_data)
     # Convert the prediction to the label
     y = rf_lb.inverse_transform(y_prediction)[0]
@@ -180,4 +177,4 @@ async def predict(data_input: UserClassInfo):
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=5000, reload=True)
