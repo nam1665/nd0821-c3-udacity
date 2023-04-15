@@ -75,28 +75,28 @@ class UserClassInfo(BaseModel):
         # This is an example with less than 50k response
         schema_extra = {
             "example": {
-                "age": 42,
-                "workclass": 'Self-emp-not-inc',
-                "fnlgt": 37618,
-                "education": 'Some-college',
-                "education_num": 10,
+                "age": 61,
+                "workclass": 'Private',
+                "fnlgt": 195453,
+                "education": 'HS-grad',
+                "education_num": 9,
                 "marital_status": "Married-civ-spouse",
-                "occupation": "Farming-fishing",
+                "occupation": "Exec-managerial",
                 "relationship": "Husband",
                 "race": "White",
                 "sex": "Male",
                 "capital_gain": 0,
                 "capital_loss": 0,
-                "hours_per_week": 60,
+                "hours_per_week": 50,
                 "native_country": 'United-States'
             }
         }
 
 
 # Load model, encoder and lb
-classifier = joblib.load("starter/model/rf_model.pkl")
-encoder = joblib.load("starter/model/encoder.pkl")
-lb = joblib.load("starter/model/lb.pkl")
+classifier = joblib.load("./model/rf_model.pkl")
+encoder = joblib.load("./model/encoder.pkl")
+lb = joblib.load("./model/lb.pkl")
 
 
 # Define GET function
@@ -121,9 +121,9 @@ async def predict(data_input: UserClassInfo):
     ]
 
     # Load rf_model, encoder and lb from model folder
-    rf_classifier = joblib.load("starter/model/rf_model.pkl")
-    rf_encoder = joblib.load("starter/model/encoder.pkl")
-    rf_lb = joblib.load("starter/model/lb.pkl")
+    rf_classifier = joblib.load("./model/rf_model.pkl")
+    rf_encoder = joblib.load("./model/encoder.pkl")
+    rf_lb = joblib.load("./model/lb.pkl")
 
     # Create input data with the right format
     test_input_from_web = np.array([[
