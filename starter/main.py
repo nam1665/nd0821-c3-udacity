@@ -94,9 +94,9 @@ class UserClassInfo(BaseModel):
 
 
 # Load model, encoder and lb
-classifier = joblib.load("model/rf_model.pkl")
-encoder = joblib.load("model/encoder.pkl")
-lb = joblib.load("model/lb.pkl")
+classifier = joblib.load("starter/model/rf_model.pkl")
+encoder = joblib.load("starter/model/encoder.pkl")
+lb = joblib.load("starter/model/lb.pkl")
 
 
 # Define GET function
